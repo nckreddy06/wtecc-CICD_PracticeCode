@@ -5,7 +5,8 @@ on:
   pull_request:
     branches: ["main"]
 
-
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
@@ -16,9 +17,9 @@ jobs:
         uses: actions/checkout@v3 
 
       - name: Install dependencies
-        run : |
+        run: |
           python -m pip install --upgrade pip
-          python install -r requirements.txt
+          python -m pip install -r requirements.txt
         
       - name: Link with flakes8
         run: |
